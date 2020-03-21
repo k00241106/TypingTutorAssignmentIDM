@@ -24,15 +24,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="typingPanel" max="32767" attributes="0"/>
                   <Component id="displayPanel" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="typingPanel" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,10 +52,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jScrollPane1" pref="1068" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -116,7 +111,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="plusButton" min="-2" pref="69" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="backspaceButton" max="32767" attributes="0"/>
+                  <Component id="backspaceButton" pref="93" max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <Component id="capsButton" min="-2" pref="75" max="-2" attributes="0"/>

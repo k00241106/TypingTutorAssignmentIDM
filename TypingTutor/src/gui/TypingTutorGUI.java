@@ -5,18 +5,24 @@
  */
 package gui;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
 /**
  *
  * @author Eoghan
  */
-public class TypingTutorGUI extends javax.swing.JFrame {
-
+public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener{
+    
+    
     /**
      * Creates new form TypingTutorGUI
      */
     public TypingTutorGUI() {
         initComponents();
-    }
+        displayTextArea.addKeyListener(this);
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,9 +106,7 @@ public class TypingTutorGUI extends javax.swing.JFrame {
         displayPanel.setLayout(displayPanelLayout);
         displayPanelLayout.setHorizontalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(displayPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         displayPanelLayout.setVerticalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +256,7 @@ public class TypingTutorGUI extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(plusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(backspaceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backspaceButton, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
                 .addGroup(typingPanelLayout.createSequentialGroup()
                     .addComponent(capsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -428,10 +432,9 @@ public class TypingTutorGUI extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(displayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(typingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addContainerGap())))
+                        .addComponent(typingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(displayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,6 +454,18 @@ public class TypingTutorGUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        ArrayList<String> pangram = new ArrayList<>();
+
+        String pangramOne = "The quick brown fox jumps over the lazy dog";
+        String pangramTwo = "The five boxing wizards jump quickly";
+        String pangramThree = "Waxy and quivering, jocks fumble the pizza";
+        
+        pangram.add(pangramOne);
+        pangram.add(pangramTwo);
+        pangram.add(pangramThree);
+        
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -545,4 +560,25 @@ public class TypingTutorGUI extends javax.swing.JFrame {
     private javax.swing.JButton zButton;
     private javax.swing.JButton zeroButton;
     // End of variables declaration//GEN-END:variables
+
+//    public void getRandomElement(ArrayList pangram){
+//        for(int i = 1;i<pangram.size();i++){
+//            displayTextArea.setText();
+//        }
+//    }
+    
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        
+    }
 }
