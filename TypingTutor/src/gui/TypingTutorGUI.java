@@ -18,6 +18,8 @@ import java.util.Random;
 public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
 
     Color highlight = new Color(127, 255, 0);
+    Color release = new Color(240, 240, 240);
+
     ArrayList<String> pangram = new ArrayList<>();
 
     String pangramOne = "The quick brown fox jumps over the lazy dog";
@@ -32,6 +34,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         displayTextArea.addKeyListener(this);
         fillArray(pangram);
         displayPan(pangram);
+        disableButton();
     }
 
     /**
@@ -604,9 +607,14 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
 //            displayTextArea.setText(pangram.get(rand.nextInt(pangram.size())));
 //        }
 //    }
+    public void disableButton() {
+        backspaceButton.setEnabled(false);
+        backTickButton.setEnabled(false);
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
-
+        displayTextArea.setText(displayTextArea.getText() + e.getKeyChar());
     }
 
     @Override
@@ -645,12 +653,321 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
             case KeyEvent.VK_9:
                 nineButton.setBackground(highlight);
                 break;
+            //
+            case KeyEvent.VK_A:
+                aButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_B:
+                bButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_C:
+                cButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_D:
+                dButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_E:
+                eButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_F:
+                fButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_G:
+                gButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_H:
+                hButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_I:
+                iButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_J:
+                jButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_K:
+                kButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_L:
+                lButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_M:
+                mButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_N:
+                nButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_O:
+                oButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_P:
+                pButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_Q:
+                qButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_R:
+                rButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_S:
+                sButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_T:
+                tButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_U:
+                uButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_V:
+                vButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_W:
+                wButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_X:
+                xButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_Y:
+                yButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_Z:
+                zButton.setBackground(highlight);
+                break;
+            //
+            case KeyEvent.VK_OPEN_BRACKET:
+                openSquareBracketButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_CLOSE_BRACKET:
+                closeSquareBracketButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_MINUS:
+                minusButton.setBackground(highlight);
+                break;
+//            case KeyEvent.VK_EQUALS+KeyEvent.VK_SHIFT:
+//                plusButton.setBackground(highlight);
+//                break;
+            case KeyEvent.VK_BACK_SPACE:
+                backspaceButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_TAB:
+                tabButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_CAPS_LOCK:
+                capsButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_SHIFT:
+                shiftButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_BACK_SLASH:
+                forwardSlashButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_SEMICOLON:
+                semicolonButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_QUOTE:
+                apostropheButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_ENTER:
+                enterButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_COMMA:
+                commaButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_PERIOD:
+                dotButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_UP:
+                upArrowButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_LEFT:
+                leftButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_RIGHT:
+                rightButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_DOWN:
+                downArrowButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_SPACE:
+                spaceButton.setBackground(highlight);
+                break;
+
         }
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+        int keyCode = e.getKeyCode();
 
+        switch (keyCode) {
+            case KeyEvent.VK_0:
+                zeroButton.setBackground(release);
+                break;
+            case KeyEvent.VK_1:
+                oneButton.setBackground(release);
+                break;
+            case KeyEvent.VK_2:
+                twoButton.setBackground(release);
+                break;
+            case KeyEvent.VK_3:
+                threeButton.setBackground(release);
+                break;
+            case KeyEvent.VK_4:
+                fourButton.setBackground(release);
+                break;
+            case KeyEvent.VK_5:
+                fiveButton.setBackground(release);
+                break;
+            case KeyEvent.VK_6:
+                sixButton.setBackground(release);
+                break;
+            case KeyEvent.VK_7:
+                sevenButton.setBackground(release);
+                break;
+            case KeyEvent.VK_8:
+                eightButton.setBackground(release);
+                break;
+            case KeyEvent.VK_9:
+                nineButton.setBackground(release);
+                break;
+            //
+            case KeyEvent.VK_A:
+                aButton.setBackground(release);
+                break;
+            case KeyEvent.VK_B:
+                bButton.setBackground(release);
+                break;
+            case KeyEvent.VK_C:
+                cButton.setBackground(release);
+                break;
+            case KeyEvent.VK_D:
+                dButton.setBackground(release);
+                break;
+            case KeyEvent.VK_E:
+                eButton.setBackground(release);
+                break;
+            case KeyEvent.VK_F:
+                fButton.setBackground(release);
+                break;
+            case KeyEvent.VK_G:
+                gButton.setBackground(release);
+                break;
+            case KeyEvent.VK_H:
+                hButton.setBackground(release);
+                break;
+            case KeyEvent.VK_I:
+                iButton.setBackground(release);
+                break;
+            case KeyEvent.VK_J:
+                jButton.setBackground(release);
+                break;
+            case KeyEvent.VK_K:
+                kButton.setBackground(release);
+                break;
+            case KeyEvent.VK_L:
+                lButton.setBackground(release);
+                break;
+            case KeyEvent.VK_M:
+                mButton.setBackground(release);
+                break;
+            case KeyEvent.VK_N:
+                nButton.setBackground(release);
+                break;
+            case KeyEvent.VK_O:
+                oButton.setBackground(release);
+                break;
+            case KeyEvent.VK_P:
+                pButton.setBackground(release);
+                break;
+            case KeyEvent.VK_Q:
+                qButton.setBackground(release);
+                break;
+            case KeyEvent.VK_R:
+                rButton.setBackground(release);
+                break;
+            case KeyEvent.VK_S:
+                sButton.setBackground(release);
+                break;
+            case KeyEvent.VK_T:
+                tButton.setBackground(release);
+                break;
+            case KeyEvent.VK_U:
+                uButton.setBackground(release);
+                break;
+            case KeyEvent.VK_V:
+                vButton.setBackground(release);
+                break;
+            case KeyEvent.VK_W:
+                wButton.setBackground(release);
+                break;
+            case KeyEvent.VK_X:
+                xButton.setBackground(release);
+                break;
+            case KeyEvent.VK_Y:
+                yButton.setBackground(release);
+                break;
+            case KeyEvent.VK_Z:
+                zButton.setBackground(release);
+                break;
+            //
+            case KeyEvent.VK_OPEN_BRACKET:
+                openSquareBracketButton.setBackground(release);
+                break;
+            case KeyEvent.VK_CLOSE_BRACKET:
+                closeSquareBracketButton.setBackground(release);
+                break;
+            case KeyEvent.VK_MINUS:
+                minusButton.setBackground(release);
+                break;
+            case KeyEvent.VK_PLUS:
+                plusButton.setBackground(release);
+                break;
+            case KeyEvent.VK_BACK_SPACE:
+                backspaceButton.setBackground(release);
+                break;
+            case KeyEvent.VK_TAB:
+                tabButton.setBackground(release);
+                break;
+            case KeyEvent.VK_CAPS_LOCK:
+                capsButton.setBackground(release);
+                break;
+            case KeyEvent.VK_SHIFT:
+                shiftButton.setBackground(release);
+                break;
+            case KeyEvent.VK_BACK_SLASH:
+                forwardSlashButton.setBackground(release);
+                break;
+            case KeyEvent.VK_SEMICOLON:
+                semicolonButton.setBackground(release);
+                break;
+            case KeyEvent.VK_QUOTE:
+                apostropheButton.setBackground(release);
+                break;
+            case KeyEvent.VK_ENTER:
+                enterButton.setBackground(release);
+                break;
+            case KeyEvent.VK_COMMA:
+                commaButton.setBackground(release);
+                break;
+            case KeyEvent.VK_PERIOD:
+                dotButton.setBackground(release);
+                break;
+            case KeyEvent.VK_UP:
+                upArrowButton.setBackground(release);
+                break;
+            case KeyEvent.VK_LEFT:
+                leftButton.setBackground(release);
+                break;
+            case KeyEvent.VK_RIGHT:
+                rightButton.setBackground(release);
+                break;
+            case KeyEvent.VK_DOWN:
+                downArrowButton.setBackground(release);
+                break;
+            case KeyEvent.VK_SPACE:
+                spaceButton.setBackground(release);
+                break;
+        }
     }
 
     private void displayPan(ArrayList<String> pangram) {
