@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -42,8 +43,6 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private void initComponents() {
 
         displayPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        displayTextArea = new javax.swing.JTextArea();
         typingPanel = new javax.swing.JPanel();
         threeButton = new javax.swing.JButton();
         backTickButton = new javax.swing.JButton();
@@ -102,24 +101,23 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         spaceButton = new javax.swing.JButton();
         leftButton = new javax.swing.JButton();
         rightButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        displayTextArea = new javax.swing.JTextArea();
+        messagePanel = new javax.swing.JPanel();
+        pangramLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Typing Application");
-
-        displayTextArea.setEditable(false);
-        displayTextArea.setColumns(20);
-        displayTextArea.setRows(5);
-        jScrollPane1.setViewportView(displayTextArea);
 
         javax.swing.GroupLayout displayPanelLayout = new javax.swing.GroupLayout(displayPanel);
         displayPanel.setLayout(displayPanelLayout);
         displayPanelLayout.setHorizontalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addGap(0, 8, Short.MAX_VALUE)
         );
         displayPanelLayout.setVerticalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
 
         threeButton.setText("3");
@@ -265,7 +263,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(plusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(backspaceButton, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+                    .addComponent(backspaceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(typingPanelLayout.createSequentialGroup()
                     .addComponent(capsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -430,10 +428,34 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                             .addComponent(downArrowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 42, Short.MAX_VALUE))
+                    .addGap(0, 34, Short.MAX_VALUE))
             );
 
             typingPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {backTickButton, tabButton});
+
+            displayTextArea.setEditable(false);
+            displayTextArea.setColumns(20);
+            displayTextArea.setRows(5);
+            jScrollPane1.setViewportView(displayTextArea);
+
+            pangramLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+            javax.swing.GroupLayout messagePanelLayout = new javax.swing.GroupLayout(messagePanel);
+            messagePanel.setLayout(messagePanelLayout);
+            messagePanelLayout.setHorizontalGroup(
+                messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(messagePanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pangramLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            messagePanelLayout.setVerticalGroup(
+                messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, messagePanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pangramLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
@@ -443,17 +465,28 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(typingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(displayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1)
+                        .addComponent(messagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(displayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap())
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(displayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(typingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap())
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(displayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(275, 275, 275))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(0, 33, Short.MAX_VALUE)
+                            .addComponent(messagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(typingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(21, 21, 21))))
             );
 
             pack();
@@ -527,6 +560,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton lButton;
     private javax.swing.JButton leftButton;
     private javax.swing.JButton mButton;
+    private javax.swing.JPanel messagePanel;
     private javax.swing.JButton minusButton;
     private javax.swing.JButton nButton;
     private javax.swing.JButton nineButton;
@@ -534,6 +568,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton oneButton;
     private javax.swing.JButton openSquareBracketButton;
     private javax.swing.JButton pButton;
+    private javax.swing.JLabel pangramLabel;
     private javax.swing.JButton plusButton;
     private javax.swing.JButton qButton;
     private javax.swing.JButton questionButton;
@@ -586,7 +621,8 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private void displayPan(ArrayList<String> pangram) {
         Random rand = new Random();
         for (int i = 0; i < pangram.size(); i++) {
-            displayTextArea.setText(pangram.get(rand.nextInt(pangram.size())));
+            pangramLabel.setText("Your Message is: "+pangram.get(rand.nextInt(pangram.size())));
+            pangramLabel.setForeground(Color.RED);
         }
     }
 
