@@ -17,12 +17,13 @@ import java.util.Random;
  */
 public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
 
+    Color highlight = new Color(127, 255, 0);
     ArrayList<String> pangram = new ArrayList<>();
 
     String pangramOne = "The quick brown fox jumps over the lazy dog";
     String pangramTwo = "The five boxing wizards jump quickly";
     String pangramThree = "Waxy and quivering, jocks fumble the pizza";
-    
+
     /**
      * Creates new form TypingTutorGUI
      */
@@ -610,7 +611,41 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        //Get The KeyCode
+        int keyCode = e.getKeyCode();
+        //Switch statement for handling keys pressed
+        switch (keyCode) {
+            case KeyEvent.VK_0:
+                zeroButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_1:
+                oneButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_2:
+                twoButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_3:
+                threeButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_4:
+                fourButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_5:
+                fiveButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_6:
+                sixButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_7:
+                sevenButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_8:
+                eightButton.setBackground(highlight);
+                break;
+            case KeyEvent.VK_9:
+                nineButton.setBackground(highlight);
+                break;
+        }
     }
 
     @Override
@@ -621,7 +656,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private void displayPan(ArrayList<String> pangram) {
         Random rand = new Random();
         for (int i = 0; i < pangram.size(); i++) {
-            pangramLabel.setText("Your Message is: "+pangram.get(rand.nextInt(pangram.size())));
+            pangramLabel.setText("Your Message is: " + pangram.get(rand.nextInt(pangram.size())));
             pangramLabel.setForeground(Color.RED);
         }
     }
