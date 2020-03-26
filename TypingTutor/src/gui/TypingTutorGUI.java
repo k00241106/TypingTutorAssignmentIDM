@@ -599,14 +599,20 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton zeroButton;
     // End of variables declaration//GEN-END:variables
 
-//    public void displayArrayList(ArrayList<String> pangram) {
-//
-//        Random rand = new Random();
-//
-//        for (int i = 0; i < pangram.size(); i++) {
-//            displayTextArea.setText(pangram.get(rand.nextInt(pangram.size())));
-//        }
-//    }
+    private void displayPan(ArrayList<String> pangram) {
+        Random rand = new Random();
+        for (int i = 0; i < pangram.size(); i++) {
+            pangramLabel.setText("Your Message is: " + pangram.get(rand.nextInt(pangram.size())));
+            pangramLabel.setForeground(Color.RED);
+        }
+    }
+
+    private void fillArray(ArrayList<String> pangram) {
+        pangram.add(pangramOne);
+        pangram.add(pangramTwo);
+        pangram.add(pangramThree);
+    }
+
     public void disableButton() {
         backspaceButton.setEnabled(false);
         backTickButton.setEnabled(false);
@@ -968,19 +974,5 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                 spaceButton.setBackground(release);
                 break;
         }
-    }
-
-    private void displayPan(ArrayList<String> pangram) {
-        Random rand = new Random();
-        for (int i = 0; i < pangram.size(); i++) {
-            pangramLabel.setText("Your Message is: " + pangram.get(rand.nextInt(pangram.size())));
-            pangramLabel.setForeground(Color.RED);
-        }
-    }
-
-    private void fillArray(ArrayList<String> pangram) {
-        pangram.add(pangramOne);
-        pangram.add(pangramTwo);
-        pangram.add(pangramThree);
     }
 }
