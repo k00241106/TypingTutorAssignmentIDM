@@ -26,6 +26,12 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     String pangramOne = "The quick brown fox jumps over the lazy dog";//31+8 spaces =39;
     String pangramTwo = "The five boxing wizards jump quickly";//31+5 spaces=36;
     String pangramThree = "Waxy and quivering, jocks fumble the pizza";//36+6 spaces =42;
+    
+    ArrayList<String> tips = new ArrayList<>();
+    
+    String tipOne = "";
+    String tipTwo = "";
+    String tipThree = "";
 
     /**
      * Creates new form TypingTutorGUI
@@ -114,6 +120,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         messagePanel = new javax.swing.JPanel();
         pangramLabel = new javax.swing.JLabel();
         messageLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Typing Application");
@@ -483,6 +490,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
             jScrollPane1.setViewportView(displayTextArea);
 
             pangramLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+            pangramLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
             messageLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
             messageLabel.setText("Your Message is:");
@@ -508,17 +516,28 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                     .addContainerGap())
             );
 
+            jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+            jLabel1.setForeground(new java.awt.Color(51, 102, 255));
+            jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            jLabel1.setText("When you have finished click the finish button to find out your score!!!");
+
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(typingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1)
-                        .addComponent(messagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(typingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1)
+                                .addComponent(messagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(205, 205, 205)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(displayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap())
             );
@@ -531,7 +550,9 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                             .addComponent(displayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(275, 275, 275))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(0, 33, Short.MAX_VALUE)
+                            .addGap(0, 8, Short.MAX_VALUE)
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(messagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -565,6 +586,8 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         } else if (finalResult > 100) {
             JOptionPane.showMessageDialog(null, "Too Many charachters entered try again!!!");
         }
+
+        resetAfterFinish();
     }//GEN-LAST:event_finishButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
@@ -647,6 +670,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton hButton;
     private javax.swing.JButton iButton;
     private javax.swing.JButton jButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton kButton;
     private javax.swing.JButton lButton;
@@ -706,6 +730,18 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     public void disableButton() {
         backspaceButton.setEnabled(false);
         backTickButton.setEnabled(false);
+    }
+
+    public void resetAfterFinish() {
+        displayTextArea.setText("");
+        pangramLabel.setText("");
+
+        Random rands = new Random();
+
+        for (int i = 0; i < pangram.size(); i++) {
+            pangramLabel.setText(pangram.get(rands.nextInt(pangram.size())));
+            pangramLabel.setForeground(Color.RED);
+        }
     }
 
     @Override
@@ -1068,4 +1104,5 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         }
     }
 
+    //TO DO: ADD TIPS FOR EXTRA FEATURE, UPDATE GUI.
 }
