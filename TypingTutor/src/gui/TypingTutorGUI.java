@@ -1254,5 +1254,5 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         }
     }
 
-    //TO DO: ADD TIPS FOR EXTRA FEATURE, UPDATE GUI.
+    //TO DO: ADD TIPS FOR EXTRA FEATURE, UPDATE GUI, Add login to constructor.
 }
