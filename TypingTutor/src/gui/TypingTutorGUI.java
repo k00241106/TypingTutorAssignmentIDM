@@ -21,17 +21,29 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     Color highlight = new Color(127, 255, 0);
     Color release = new Color(240, 240, 240);
 
-    ArrayList<String> pangram = new ArrayList<>();
+    ArrayList<String> easyLevelPangram = new ArrayList<>();
 
-    String pangramOne = "The quick brown fox jumps over the lazy dog";//31+8 spaces =39;
-    String pangramTwo = "The five boxing wizards jump quickly";//31+5 spaces=36;
-    String pangramThree = "Waxy and quivering, jocks fumble the pizza";//36+6 spaces =42;
-    
+    String easyPangramOne = "The quick brown fox jumps over the lazy dog";//31+8 spaces =39;
+    String easyPangramTwo = "The five boxing wizards jump quickly";//31+5 spaces=36;
+    String easyPangramThree = "Waxy and quivering, jocks fumble the pizza";//36+6 spaces =42;
+
+    ArrayList<String> mediumLevelPangram = new ArrayList<>();
+
+    String mediumPangramOne = "Sphinx of black quartz, judge my vow";
+    String mediumPangramTwo = "Jackdaws love my big sphinx of quartz";
+    String mediumPangramThree = "Two driven jocks help fax my big quiz";
+
+    ArrayList<String> hardLevelPangram = new ArrayList<>();
+
+    String hardPangramOne = "A wizard's job is to vex chumps quickly in fog";
+    String hardPangramTwo = "By Jove, my quick study of lexicography won a prize";
+    String hardPangramThree = "How vexingly quick daft zebras jump";
+
     ArrayList<String> tips = new ArrayList<>();
-    
-    String tipOne = "";
-    String tipTwo = "";
-    String tipThree = "";
+
+    String tipOne = "Try out all the difficulties to challenge yourself!!!";
+    String tipTwo = "Place your fingers on the f and j keys for better accuracy";
+    String tipThree = "Check out the leaderboards for your score";
 
     /**
      * Creates new form TypingTutorGUI
@@ -40,8 +52,6 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         initComponents();
         disableButton();
         displayTextArea.addKeyListener(this);
-        fillArray(pangram);
-        displayPan(pangram);
     }
 
     /**
@@ -53,6 +63,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        difficultyButtonGroup = new javax.swing.ButtonGroup();
         displayPanel = new javax.swing.JPanel();
         typingPanel = new javax.swing.JPanel();
         threeButton = new javax.swing.JButton();
@@ -121,6 +132,10 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         pangramLabel = new javax.swing.JLabel();
         messageLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        difficultyPanel = new javax.swing.JPanel();
+        hardRadioButton = new javax.swing.JRadioButton();
+        mediumRadioButton = new javax.swing.JRadioButton();
+        easyRadioButton = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Typing Application");
@@ -129,7 +144,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         displayPanel.setLayout(displayPanelLayout);
         displayPanelLayout.setHorizontalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         displayPanelLayout.setVerticalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,21 +376,19 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(forwardSlashButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(typingPanelLayout.createSequentialGroup()
-                            .addGroup(typingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(typingPanelLayout.createSequentialGroup()
-                                    .addComponent(shiftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(zButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(xButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(typingPanelLayout.createSequentialGroup()
-                                    .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(shiftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(zButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(xButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(typingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(typingPanelLayout.createSequentialGroup()
+                                    .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(125, 125, 125)
+                                    .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(typingPanelLayout.createSequentialGroup()
                                     .addComponent(cButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -475,11 +488,12 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                         .addGroup(typingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(downArrowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(resetButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(finishButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(0, 34, Short.MAX_VALUE))
+                            .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(typingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(finishButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             );
 
             typingPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {backTickButton, tabButton});
@@ -502,9 +516,9 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, messagePanelLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(messageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(pangramLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(49, 49, 49))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             messagePanelLayout.setVerticalGroup(
                 messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,10 +530,64 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                     .addContainerGap())
             );
 
-            jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+            jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(51, 102, 255));
             jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            jLabel1.setText("When you have finished click the finish button to find out your score!!!");
+            jLabel1.setText("NB: When you have finished click the finish button to find out your score!!!");
+
+            difficultyButtonGroup.add(hardRadioButton);
+            hardRadioButton.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+            hardRadioButton.setForeground(new java.awt.Color(220, 20, 60));
+            hardRadioButton.setText("Hard");
+            hardRadioButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    hardRadioButtonActionPerformed(evt);
+                }
+            });
+
+            difficultyButtonGroup.add(mediumRadioButton);
+            mediumRadioButton.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+            mediumRadioButton.setForeground(new java.awt.Color(255, 165, 0));
+            mediumRadioButton.setText("Medium");
+            mediumRadioButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    mediumRadioButtonActionPerformed(evt);
+                }
+            });
+
+            difficultyButtonGroup.add(easyRadioButton);
+            easyRadioButton.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+            easyRadioButton.setForeground(new java.awt.Color(0, 153, 0));
+            easyRadioButton.setText("Easy");
+            easyRadioButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    easyRadioButtonActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout difficultyPanelLayout = new javax.swing.GroupLayout(difficultyPanel);
+            difficultyPanel.setLayout(difficultyPanelLayout);
+            difficultyPanelLayout.setHorizontalGroup(
+                difficultyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, difficultyPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(easyRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(140, 140, 140)
+                    .addComponent(mediumRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hardRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
+            );
+            difficultyPanelLayout.setVerticalGroup(
+                difficultyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, difficultyPanelLayout.createSequentialGroup()
+                    .addContainerGap(31, Short.MAX_VALUE)
+                    .addGroup(difficultyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(hardRadioButton)
+                        .addComponent(easyRadioButton)
+                        .addComponent(mediumRadioButton))
+                    .addContainerGap())
+            );
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
@@ -532,14 +600,15 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(typingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1)
-                                .addComponent(messagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addComponent(messagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(205, 205, 205)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(displayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap())
+                            .addGap(186, 186, 186)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
+                                .addComponent(difficultyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(displayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,18 +616,19 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(displayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(275, 275, 275))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(0, 8, Short.MAX_VALUE)
                             .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                            .addComponent(difficultyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(messagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(typingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(21, 21, 21))))
+                            .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(displayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             );
 
             pack();
@@ -566,45 +636,84 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         }// </editor-fold>//GEN-END:initComponents
 
     private void finishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishButtonActionPerformed
-        int userInput = displayTextArea.getText().length();
-        int message = pangramLabel.getText().length();
+        try {
+            int userInput = displayTextArea.getText().length();
+            int message = pangramLabel.getText().length();
 
-        double result = userInput / message;
+            double result = userInput / message;
 
-        double finalResult = result * 100;
+            double finalResult = result * 100;
 
-        if (finalResult == 100) {
-            JOptionPane.showMessageDialog(null, " Congratulations you typed it perfectly " + finalResult);
-        } else if (finalResult < 100 && finalResult > 90) {
-            JOptionPane.showMessageDialog(null, "Excellent Work but try again for a perfect score " + finalResult);
-        } else if (finalResult > 60 && finalResult < 90) {
-            JOptionPane.showMessageDialog(null, "Good work but we know you can do better!!! " + finalResult);
-        } else if (finalResult > 40 && finalResult < 60) {
-            JOptionPane.showMessageDialog(null, "Good Effort but try again " + finalResult);
-        } else if (finalResult < 40) {
-            JOptionPane.showMessageDialog(null, "You have failed try again!!! " + finalResult);
-        } else if (finalResult > 100) {
-            JOptionPane.showMessageDialog(null, "Too Many charachters entered try again!!!");
+            if (finalResult == 100) {
+                JOptionPane.showMessageDialog(null, " Congratulations you typed it perfectly " + finalResult);
+            } else if (finalResult < 100 && finalResult > 90) {
+                JOptionPane.showMessageDialog(null, "Excellent Work but try again for a perfect score " + finalResult);
+            } else if (finalResult > 60 && finalResult < 90) {
+                JOptionPane.showMessageDialog(null, "Good work but we know you can do better!!! " + finalResult);
+            } else if (finalResult > 40 && finalResult < 60) {
+                JOptionPane.showMessageDialog(null, "Good Effort but try again " + finalResult);
+            } else if (finalResult < 40) {
+                JOptionPane.showMessageDialog(null, "You have failed try again!!! " + finalResult);
+            } else if (finalResult > 100) {
+                JOptionPane.showMessageDialog(null, "Too Many charachters entered try again!!!");
+            }
+        } catch (ArithmeticException e) {
+            JOptionPane.showMessageDialog(null, "No charchters entered", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
         resetAfterFinish();
     }//GEN-LAST:event_finishButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         displayTextArea.setText("");
         pangramLabel.setText("");
-
-        Random rands = new Random();
-
-        for (int i = 0; i < pangram.size(); i++) {
-            pangramLabel.setText(pangram.get(rands.nextInt(pangram.size())));
-            pangramLabel.setForeground(Color.RED);
-        }
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void easyRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyRadioButtonActionPerformed
+        displayEasyPan(easyLevelPangram);
+        fillEasyPan(easyLevelPangram);
+
+        if (easyRadioButton.isSelected()) {
+
+            Random rands = new Random();
+
+            for (int i = 0; i < easyLevelPangram.size(); i++) {
+                pangramLabel.setText(easyLevelPangram.get(rands.nextInt(easyLevelPangram.size())));
+                pangramLabel.setForeground(Color.RED);
+            }
+        }
+    }//GEN-LAST:event_easyRadioButtonActionPerformed
+
+    private void mediumRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumRadioButtonActionPerformed
+        displayMediumPan(mediumLevelPangram);
+        fillMediumPan(mediumLevelPangram);
+
+        if (mediumRadioButton.isSelected()) {
+            Random rands = new Random();
+
+            for (int i = 0; i < mediumLevelPangram.size(); i++) {
+                pangramLabel.setText(mediumLevelPangram.get(rands.nextInt(mediumLevelPangram.size())));
+                pangramLabel.setForeground(Color.RED);
+            }
+        }
+    }//GEN-LAST:event_mediumRadioButtonActionPerformed
+
+    private void hardRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardRadioButtonActionPerformed
+        displayHardPan(hardLevelPangram);
+        fillHardPan(hardLevelPangram);
+
+        if (hardRadioButton.isSelected()) {
+            Random rands = new Random();
+
+            for (int i = 0; i < hardLevelPangram.size(); i++) {
+                pangramLabel.setText(hardLevelPangram.get(rands.nextInt(hardLevelPangram.size())));
+                pangramLabel.setForeground(Color.RED);
+            }
+        }
+    }//GEN-LAST:event_hardRadioButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -653,11 +762,14 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton closeSquareBracketButton;
     private javax.swing.JButton commaButton;
     private javax.swing.JButton dButton;
+    private javax.swing.ButtonGroup difficultyButtonGroup;
+    private javax.swing.JPanel difficultyPanel;
     private javax.swing.JPanel displayPanel;
     private javax.swing.JTextArea displayTextArea;
     private javax.swing.JButton dotButton;
     private javax.swing.JButton downArrowButton;
     private javax.swing.JButton eButton;
+    private javax.swing.JRadioButton easyRadioButton;
     private javax.swing.JButton eightButton;
     private javax.swing.JButton enterButton;
     private javax.swing.JButton exitButton;
@@ -668,6 +780,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton fourButton;
     private javax.swing.JButton gButton;
     private javax.swing.JButton hButton;
+    private javax.swing.JRadioButton hardRadioButton;
     private javax.swing.JButton iButton;
     private javax.swing.JButton jButton;
     private javax.swing.JLabel jLabel1;
@@ -676,6 +789,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton lButton;
     private javax.swing.JButton leftButton;
     private javax.swing.JButton mButton;
+    private javax.swing.JRadioButton mediumRadioButton;
     private javax.swing.JLabel messageLabel;
     private javax.swing.JPanel messagePanel;
     private javax.swing.JButton minusButton;
@@ -713,18 +827,54 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton zeroButton;
     // End of variables declaration//GEN-END:variables
 
-    private void displayPan(ArrayList<String> pangram) {
+    private void displayEasyPan(ArrayList<String> easyLevelPangram) {
         Random rand = new Random();
-        for (int i = 0; i < pangram.size(); i++) {
-            pangramLabel.setText(pangram.get(rand.nextInt(pangram.size())));
+        for (int i = 0; i < easyLevelPangram.size(); i++) {
+            pangramLabel.setText(easyLevelPangram.get(rand.nextInt(easyLevelPangram.size())));
             pangramLabel.setForeground(Color.RED);
         }
     }
 
-    private void fillArray(ArrayList<String> pangram) {
-        pangram.add(pangramOne);
-        pangram.add(pangramTwo);
-        pangram.add(pangramThree);
+    private void fillEasyPan(ArrayList<String> easyLevelPangram) {
+        easyLevelPangram.add(easyPangramOne);
+        easyLevelPangram.add(easyPangramTwo);
+        easyLevelPangram.add(easyPangramThree);
+    }
+
+    public void displayMediumPan(ArrayList<String> mediumLevelPangram) {
+        Random rands = new Random();
+        for (int i = 0; i < mediumLevelPangram.size(); i++) {
+            pangramLabel.setText(mediumLevelPangram.get(rands.nextInt(mediumLevelPangram.size())));
+            pangramLabel.setForeground(Color.RED);
+        }
+    }
+
+    public void fillMediumPan(ArrayList<String> mediumLevelPangram) {
+        mediumLevelPangram.add(mediumPangramOne);
+        mediumLevelPangram.add(mediumPangramTwo);
+        mediumLevelPangram.add(mediumPangramThree);
+    }
+
+    public void displayHardPan(ArrayList<String> hardLevelPangram) {
+        Random rands = new Random();
+        for (int i = 0; i < hardLevelPangram.size(); i++) {
+            pangramLabel.setText(hardLevelPangram.get(rands.nextInt(hardLevelPangram.size())));
+            pangramLabel.setForeground(Color.RED);
+        }
+    }
+
+    public void fillHardPan(ArrayList<String> hardLevelPangram) {
+        hardLevelPangram.add(hardPangramOne);
+        hardLevelPangram.add(hardPangramTwo);
+        hardLevelPangram.add(hardPangramThree);
+    }
+
+    public void displayTips(ArrayList<String> tips) {
+
+    }
+
+    public void fillTips(ArrayList<String> tips) {
+
     }
 
     public void disableButton() {
@@ -738,8 +888,8 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
 
         Random rands = new Random();
 
-        for (int i = 0; i < pangram.size(); i++) {
-            pangramLabel.setText(pangram.get(rands.nextInt(pangram.size())));
+        for (int i = 0; i < easyLevelPangram.size(); i++) {
+            pangramLabel.setText(easyLevelPangram.get(rands.nextInt(easyLevelPangram.size())));
             pangramLabel.setForeground(Color.RED);
         }
     }
