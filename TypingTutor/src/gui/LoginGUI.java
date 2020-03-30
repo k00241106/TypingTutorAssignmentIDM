@@ -5,6 +5,11 @@
  */
 package gui;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import model.User;
 
@@ -13,9 +18,10 @@ import model.User;
  * @author Eoghan
  */
 public class LoginGUI extends javax.swing.JFrame {
-    
+
+    File file = new File("users.txt");
     ArrayList<User> myUsers = new ArrayList<>();
-    
+
     /**
      * Creates new form LoginGUI
      */
@@ -41,6 +47,7 @@ public class LoginGUI extends javax.swing.JFrame {
         buttonPanel = new javax.swing.JPanel();
         loginButton = new javax.swing.JButton();
         signUpButton = new javax.swing.JButton();
+        displayButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -111,6 +118,13 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
 
+        displayButton.setText("display");
+        displayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
         buttonPanel.setLayout(buttonPanelLayout);
         buttonPanelLayout.setHorizontalGroup(
@@ -120,13 +134,17 @@ public class LoginGUI extends javax.swing.JFrame {
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(signUpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(displayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         buttonPanelLayout.setVerticalGroup(
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(loginButton)
+                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(displayButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(signUpButton)
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -159,20 +177,45 @@ public class LoginGUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    public void addUser(ArrayList<User> myUsers) throws FileNotFoundException, IOException {
 
+        String username = userNameTextField.getText();
+        String password = passwordTextField.getText();
+
+        FileOutputStream fo = new FileOutputStream(file);
+        ObjectOutputStream output = new ObjectOutputStream(fo);
+
+        for (User users1 : myUsers) {
+            User user = new User(username, password);
+            myUsers.add(users1);
+            output.writeObject(user);
+        }
+
+        output.close();
+        fo.close();
+    }
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         TypingTutorGUI typingTutor = new TypingTutorGUI();
         typingTutor.setVisible(true);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
+//        try {
+//            addUser(myUsers);
+//        } catch (IOException ex) {
+//        }
         String userName = userNameTextField.getText();
         String password = passwordTextField.getText();
-        
+
         User user = new User(userName, password);
-        
         myUsers.add(user);
     }//GEN-LAST:event_signUpButtonActionPerformed
+
+    private void displayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayButtonActionPerformed
+        for (User user : myUsers) {
+            System.out.println(user.getUserName());
+        }
+    }//GEN-LAST:event_displayButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,6 +254,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
+    private javax.swing.JButton displayButton;
     private javax.swing.JPanel formPanel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JButton loginButton;
