@@ -51,7 +51,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     public TypingTutorGUI() {
         initComponents();
         disableButton();
-        getLogin();
+//        getLogin();
         displayTextArea.addKeyListener(this);
     }
 
@@ -887,11 +887,11 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         displayTextArea.setText("");
         pangramLabel.setText("");
     }
-    
-    public void getLogin(){
+
+    public void getLogin() {
         String username;
         String password;
-        
+
         username = JOptionPane.showInputDialog("Enter username?");
         password = JOptionPane.showInputDialog("Enter password?");
     }
