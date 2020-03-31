@@ -653,40 +653,41 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         }// </editor-fold>//GEN-END:initComponents
 
     private void finishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishButtonActionPerformed
-//        try {
-//            int userInput = displayTextArea.getText().length();
-//            int message = pangramLabel.getText().length();
-//
-//            double result = userInput / message;
-//
-//            double finalResult = result * 100;
-//
-//            if (finalResult == 100) {
-//                JOptionPane.showMessageDialog(null, " Congratulations you typed it perfectly " + finalResult);
-//            } else if (finalResult < 100 && finalResult > 90) {
-//                JOptionPane.showMessageDialog(null, "Excellent Work but try again for a perfect score " + finalResult);
-//            } else if (finalResult > 60 && finalResult < 90) {
-//                JOptionPane.showMessageDialog(null, "Good work but we know you can do better!!! " + finalResult);
-//            } else if (finalResult > 40 && finalResult < 60) {
-//                JOptionPane.showMessageDialog(null, "Good Effort but try again " + finalResult);
-//            } else if (finalResult < 40) {
-//                JOptionPane.showMessageDialog(null, "You have failed try again!!! " + finalResult);
-//            } else if (finalResult > 100) {
-//                JOptionPane.showMessageDialog(null, "Too Many charachters entered try again!!!");
-//            }
-//        } catch (ArithmeticException e) {
-//            JOptionPane.showMessageDialog(null, "No charchters entered", "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-        int message = pangramLabel.getText().trim().length();
-        int userInput = displayTextArea.getText().length();
+        try {
+            //USER INPUT
+            int userInput = displayTextArea.getText().trim().length();
 
-        int total = message + userInput;
-        JOptionPane.showMessageDialog(null, total);
-        
-        if(total > 40){
-            JOptionPane.showMessageDialog(null, "Nice");
-        }else{
-            JOptionPane.showMessageDialog(null, "Unlucky");
+            double decimalUserInput = (double) userInput / 100;
+            double finalDecimalUserInput = decimalUserInput * 100;
+            //RESULT IS 6
+
+            //PANGRAM
+            int message = pangramLabel.getText().trim().length();
+
+            double decimalMessage = (double) message / 100;
+            double finalDecimalMessage = decimalMessage * 100;
+
+            // RESULT IS 36
+            double divideResult = finalDecimalUserInput / finalDecimalMessage; // 6 /36 = 0.1666666...
+            double finalResult = divideResult * 100;// 0.1666666 * 100 = 16.66
+
+            double roundedFinalResult = Math.round(finalResult);
+
+            if (roundedFinalResult == 100) {
+                JOptionPane.showMessageDialog(null, " Congratulations you typed it perfectly " + roundedFinalResult + "%");
+            } else if (roundedFinalResult < 100 && roundedFinalResult > 90) {
+                JOptionPane.showMessageDialog(null, "Excellent Work but try again for a perfect score " + roundedFinalResult + "%");
+            } else if (roundedFinalResult > 60 && roundedFinalResult < 90) {
+                JOptionPane.showMessageDialog(null, "Good work but we know you can do better!!! " + roundedFinalResult + "%");
+            } else if (roundedFinalResult > 40 && roundedFinalResult < 60) {
+                JOptionPane.showMessageDialog(null, "Good Effort but try again " + roundedFinalResult + "%");
+            } else if (roundedFinalResult < 40) {
+                JOptionPane.showMessageDialog(null, "You have failed try again!!! " + roundedFinalResult + "%");
+            } else if (roundedFinalResult > 100) {
+                JOptionPane.showMessageDialog(null, "Too Many charachters entered try again!!!");
+            }
+        } catch (ArithmeticException e) {
+            JOptionPane.showMessageDialog(null, "Error", "Too many Charahcters entered", JOptionPane.ERROR_MESSAGE);
         }
         resetAfterFinish();
     }//GEN-LAST:event_finishButtonActionPerformed
@@ -1281,5 +1282,5 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         }
     }
 
-    //TO DO: ADD TIPS FOR EXTRA FEATURE, UPDATE GUI, Add login to constructor.
+    //TO DO: ADD TIPS FOR EXTRA FEATURE, UPDATE GUI, Generate random usernames and passwords.
 }
