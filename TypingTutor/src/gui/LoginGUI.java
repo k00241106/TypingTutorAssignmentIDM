@@ -11,6 +11,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import model.User;
 
 /**
@@ -19,8 +22,10 @@ import model.User;
  */
 public class LoginGUI extends javax.swing.JFrame {
 
-    File file = new File("users.txt");
     ArrayList<User> myUsers = new ArrayList<>();
+
+    String userName;
+    String password;
 
     /**
      * Creates new form LoginGUI
@@ -177,37 +182,33 @@ public class LoginGUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    public void addUser(ArrayList<User> myUsers) throws FileNotFoundException, IOException {
-
-        String username = userNameTextField.getText();
-        String password = passwordTextField.getText();
-
-        FileOutputStream fo = new FileOutputStream(file);
-        ObjectOutputStream output = new ObjectOutputStream(fo);
-
-        for (User users1 : myUsers) {
-            User user = new User(username, password);
-            myUsers.add(users1);
-            output.writeObject(user);
-        }
-
-        output.close();
-        fo.close();
-    }
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        TypingTutorGUI typingTutor = new TypingTutorGUI();
-        typingTutor.setVisible(true);
+        if (validateUser(userName) && validatePassword(password)) {
+            JOptionPane.showMessageDialog(null, " Welcome " + userNameTextField.getText());
+            TypingTutorGUI typingTutor = new TypingTutorGUI();
+            typingTutor.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, " Not a Valid username or password ");
+            TypingTutorGUI typingTutor = new TypingTutorGUI();
+            typingTutor.setVisible(false);
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
-//        try {
-//            addUser(myUsers);
-//        } catch (IOException ex) {
-//        }
-        String userName = userNameTextField.getText();
-        String password = passwordTextField.getText();
+        if (validateUser(userName) && validatePassword(password)) {
+            JOptionPane.showMessageDialog(null, " Welcome " + userNameTextField.getText());
+            TypingTutorGUI typingTutor = new TypingTutorGUI();
+            typingTutor.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Not a Valid username or password");
+            TypingTutorGUI typingTutor = new TypingTutorGUI();
+            typingTutor.setVisible(false);
+        }
 
-        User user = new User(userName, password);
+        String user1 = userNameTextField.getText();
+        String ps1 = passwordTextField.getText();
+
+        User user = new User(user1, ps1);
         myUsers.add(user);
     }//GEN-LAST:event_signUpButtonActionPerformed
 
@@ -264,4 +265,14 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JLabel userNameLabel;
     private javax.swing.JTextField userNameTextField;
     // End of variables declaration//GEN-END:variables
+
+    public boolean validateUser(String userName) {
+        userName = userNameTextField.getText();
+        return Pattern.matches("^[a-z0-9_-]{3,15}$", userName);
+    }
+
+    public boolean validatePassword(String password) {
+        password = passwordTextField.getText();
+        return Pattern.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})", password);
+    }
 }

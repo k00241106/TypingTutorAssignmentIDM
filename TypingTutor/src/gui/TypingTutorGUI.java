@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import model.User;
 
 /**
  *
@@ -136,6 +137,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         hardRadioButton = new javax.swing.JRadioButton();
         mediumRadioButton = new javax.swing.JRadioButton();
         easyRadioButton = new javax.swing.JRadioButton();
+        homeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Typing Application");
@@ -589,6 +591,13 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                     .addContainerGap())
             );
 
+            homeButton.setText("Home");
+            homeButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    homeButtonActionPerformed(evt);
+                }
+            });
+
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
@@ -602,7 +611,9 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                                 .addComponent(jScrollPane1)
                                 .addComponent(messagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(186, 186, 186)
+                            .addGap(22, 22, 22)
+                            .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(95, 95, 95)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
                                 .addComponent(difficultyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -616,10 +627,16 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                            .addComponent(difficultyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                    .addComponent(difficultyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(16, 16, 16)
+                                    .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(messagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -636,29 +653,40 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         }// </editor-fold>//GEN-END:initComponents
 
     private void finishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishButtonActionPerformed
-        try {
-            int userInput = displayTextArea.getText().length();
-            int message = pangramLabel.getText().length();
+//        try {
+//            int userInput = displayTextArea.getText().length();
+//            int message = pangramLabel.getText().length();
+//
+//            double result = userInput / message;
+//
+//            double finalResult = result * 100;
+//
+//            if (finalResult == 100) {
+//                JOptionPane.showMessageDialog(null, " Congratulations you typed it perfectly " + finalResult);
+//            } else if (finalResult < 100 && finalResult > 90) {
+//                JOptionPane.showMessageDialog(null, "Excellent Work but try again for a perfect score " + finalResult);
+//            } else if (finalResult > 60 && finalResult < 90) {
+//                JOptionPane.showMessageDialog(null, "Good work but we know you can do better!!! " + finalResult);
+//            } else if (finalResult > 40 && finalResult < 60) {
+//                JOptionPane.showMessageDialog(null, "Good Effort but try again " + finalResult);
+//            } else if (finalResult < 40) {
+//                JOptionPane.showMessageDialog(null, "You have failed try again!!! " + finalResult);
+//            } else if (finalResult > 100) {
+//                JOptionPane.showMessageDialog(null, "Too Many charachters entered try again!!!");
+//            }
+//        } catch (ArithmeticException e) {
+//            JOptionPane.showMessageDialog(null, "No charchters entered", "Error", JOptionPane.ERROR_MESSAGE);
+//        }
+        int message = pangramLabel.getText().trim().length();
+        int userInput = displayTextArea.getText().length();
 
-            double result = userInput / message;
-
-            double finalResult = result * 100;
-
-            if (finalResult == 100) {
-                JOptionPane.showMessageDialog(null, " Congratulations you typed it perfectly " + finalResult);
-            } else if (finalResult < 100 && finalResult > 90) {
-                JOptionPane.showMessageDialog(null, "Excellent Work but try again for a perfect score " + finalResult);
-            } else if (finalResult > 60 && finalResult < 90) {
-                JOptionPane.showMessageDialog(null, "Good work but we know you can do better!!! " + finalResult);
-            } else if (finalResult > 40 && finalResult < 60) {
-                JOptionPane.showMessageDialog(null, "Good Effort but try again " + finalResult);
-            } else if (finalResult < 40) {
-                JOptionPane.showMessageDialog(null, "You have failed try again!!! " + finalResult);
-            } else if (finalResult > 100) {
-                JOptionPane.showMessageDialog(null, "Too Many charachters entered try again!!!");
-            }
-        } catch (ArithmeticException e) {
-            JOptionPane.showMessageDialog(null, "No charchters entered", "Error", JOptionPane.ERROR_MESSAGE);
+        int total = message + userInput;
+        JOptionPane.showMessageDialog(null, total);
+        
+        if(total > 40){
+            JOptionPane.showMessageDialog(null, "Nice");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unlucky");
         }
         resetAfterFinish();
     }//GEN-LAST:event_finishButtonActionPerformed
@@ -714,6 +742,11 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
             }
         }
     }//GEN-LAST:event_hardRadioButtonActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        LoginGUI login = new LoginGUI();
+        login.setVisible(true);
+    }//GEN-LAST:event_homeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -781,6 +814,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton gButton;
     private javax.swing.JButton hButton;
     private javax.swing.JRadioButton hardRadioButton;
+    private javax.swing.JButton homeButton;
     private javax.swing.JButton iButton;
     private javax.swing.JButton jButton;
     private javax.swing.JLabel jLabel1;
