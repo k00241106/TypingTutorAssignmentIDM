@@ -688,7 +688,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                 JOptionPane.showMessageDialog(null, "Too Many charachters entered try again!!!");
             }
         } catch (ArithmeticException e) {
-            JOptionPane.showMessageDialog(null, "Error", "Too many Charahcters entered", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error", "No Charahcters entered", JOptionPane.ERROR_MESSAGE);
         }
         resetAfterFinish();
     }//GEN-LAST:event_finishButtonActionPerformed
@@ -699,7 +699,11 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        System.exit(0);
+        int select = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Choose", JOptionPane.YES_NO_OPTION);
+
+        if (select == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void easyRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyRadioButtonActionPerformed
@@ -1289,17 +1293,5 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         mediumRadioButton.setFocusPainted(false);
         hardRadioButton.setFocusPainted(false);
     }
-
-//    public void setTextFocus() {
-//        boolean easyRadioAns = false;
-//
-//        if (easyRadioButton.isSelected() || mediumRadioButton.isSelected() || hardRadioButton.isSelected()) {
-//            easyRadioAns = true;
-//        }
-//
-//        if (easyRadioAns == true) {
-//            displayTextArea.setFocusable(true);
-//        }
-//    }
-    //TO DO: ADD TIPS FOR EXTRA FEATURE, UPDATE GUI, Generate random usernames and passwords.
+    //TO DO: ADD TIPS FOR EXTRA FEATURE, UPDATE GUI,
 }

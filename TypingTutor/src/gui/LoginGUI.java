@@ -26,6 +26,11 @@ public class LoginGUI extends javax.swing.JFrame {
     private String allowedUserChars = "abcdefghijklmnopqrstuvwxyz0123456789";
     private String allowedPassChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%";
 
+    private String ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private String ALPHA = "abcdefghijklmnopqrstuvwxyz";
+    private String NUMERIC = "0123456789";
+    private String SPECIAL_CHARS = "!@#$%^&*_-/";
+
     ArrayList<User> myUsers = new ArrayList<>();
 
     String userName;
@@ -251,7 +256,9 @@ public class LoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_generateButtonActionPerformed
 
     private void generatePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generatePasswordButtonActionPerformed
-        getRandomPassword(6, 20);
+        int len = 15;
+        String passwordGen = generatePassword(len, ALPHA_CAPS + ALPHA + SPECIAL_CHARS + NUMERIC);
+        passwordTextField.setText(passwordGen);
     }//GEN-LAST:event_generatePasswordButtonActionPerformed
 
     /**
@@ -311,7 +318,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
     public boolean validatePassword(String password) {
         password = passwordTextField.getText();
-        return Pattern.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})", password);
+        return Pattern.matches("((?=.*[a-z])(?=.*[A-Z]).{6,20})", password);
     }
 
     public void getRandomValue(int min, int max) {
@@ -324,25 +331,18 @@ public class LoginGUI extends javax.swing.JFrame {
         }
 
         String finalUserSalt = sb.toString().trim();
-
-//        return sb.toString();
         userNameTextField.setText(finalUserSalt);
     }
 
-    public void getRandomPassword(int min, int max) {
-        Random rand = new Random();
-        int length = rand.nextInt(max - min + 1) + min;
-        StringBuilder sbp = new StringBuilder();
+    public String generatePassword(int len, String dic) {
+        String result = "";
 
-        for (int i = 0; i < length; i++) {
-            sbp.append(allowedPassChars.charAt(rand.nextInt(allowedPassChars.length())));
+        Random random = new Random();
+
+        for (int i = 0; i < len; i++) {
+            int index = random.nextInt(dic.length());
+            result += dic.charAt(index);
         }
-
-        String finalPassSalt = sbp.toString().trim();
-
-        passwordTextField.setText(finalPassSalt);
-
+        return result;
     }
-    
-    
 }
