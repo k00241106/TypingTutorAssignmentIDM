@@ -52,6 +52,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     public TypingTutorGUI() {
         initComponents();
         disableButton();
+        deselectButton();
         displayTextArea.addKeyListener(this);
     }
 
@@ -1282,5 +1283,23 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         }
     }
 
+    public void deselectButton() {
+        homeButton.setFocusable(false);
+        easyRadioButton.setFocusPainted(false);
+        mediumRadioButton.setFocusPainted(false);
+        hardRadioButton.setFocusPainted(false);
+    }
+
+//    public void setTextFocus() {
+//        boolean easyRadioAns = false;
+//
+//        if (easyRadioButton.isSelected() || mediumRadioButton.isSelected() || hardRadioButton.isSelected()) {
+//            easyRadioAns = true;
+//        }
+//
+//        if (easyRadioAns == true) {
+//            displayTextArea.setFocusable(true);
+//        }
+//    }
     //TO DO: ADD TIPS FOR EXTRA FEATURE, UPDATE GUI, Generate random usernames and passwords.
 }

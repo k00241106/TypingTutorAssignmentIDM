@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -21,6 +22,9 @@ import model.User;
  * @author Eoghan
  */
 public class LoginGUI extends javax.swing.JFrame {
+
+    private String allowedUserChars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    private String allowedPassChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%";
 
     ArrayList<User> myUsers = new ArrayList<>();
 
@@ -49,6 +53,8 @@ public class LoginGUI extends javax.swing.JFrame {
         userNameTextField = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
         passwordTextField = new javax.swing.JTextField();
+        generateButton = new javax.swing.JButton();
+        generatePasswordButton = new javax.swing.JButton();
         buttonPanel = new javax.swing.JPanel();
         loginButton = new javax.swing.JButton();
         signUpButton = new javax.swing.JButton();
@@ -74,34 +80,56 @@ public class LoginGUI extends javax.swing.JFrame {
         passwordLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         passwordLabel.setText("Password: ");
 
+        generateButton.setText("Generate");
+        generateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateButtonActionPerformed(evt);
+            }
+        });
+
+        generatePasswordButton.setText("Gen Pass");
+        generatePasswordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generatePasswordButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout formPanelLayout = new javax.swing.GroupLayout(formPanel);
         formPanel.setLayout(formPanelLayout);
         formPanelLayout.setHorizontalGroup(
             formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formPanelLayout.createSequentialGroup()
                 .addGap(118, 118, 118)
-                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(formPanelLayout.createSequentialGroup()
                         .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(generatePasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(formPanelLayout.createSequentialGroup()
                         .addComponent(userNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                        .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(generateButton)))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         formPanelLayout.setVerticalGroup(
             formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formPanelLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userNameLabel))
+                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userNameLabel))
+                    .addComponent(generateButton))
                 .addGap(18, 18, 18)
                 .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passwordLabel)
-                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(generatePasswordButton)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -176,7 +204,7 @@ public class LoginGUI extends javax.swing.JFrame {
                 .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -218,6 +246,14 @@ public class LoginGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_displayButtonActionPerformed
 
+    private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
+        getRandomValue(3, 15);
+    }//GEN-LAST:event_generateButtonActionPerformed
+
+    private void generatePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generatePasswordButtonActionPerformed
+        getRandomPassword(6, 20);
+    }//GEN-LAST:event_generatePasswordButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,6 +293,8 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JButton displayButton;
     private javax.swing.JPanel formPanel;
+    private javax.swing.JButton generateButton;
+    private javax.swing.JButton generatePasswordButton;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel passwordLabel;
@@ -273,6 +311,38 @@ public class LoginGUI extends javax.swing.JFrame {
 
     public boolean validatePassword(String password) {
         password = passwordTextField.getText();
-        return Pattern.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})", password);
+        return Pattern.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})", password);
     }
+
+    public void getRandomValue(int min, int max) {
+        Random rand = new Random();
+        int length = rand.nextInt(max - min + 1) + min;
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            sb.append(allowedUserChars.charAt(rand.nextInt(allowedUserChars.length())));
+        }
+
+        String finalUserSalt = sb.toString().trim();
+
+//        return sb.toString();
+        userNameTextField.setText(finalUserSalt);
+    }
+
+    public void getRandomPassword(int min, int max) {
+        Random rand = new Random();
+        int length = rand.nextInt(max - min + 1) + min;
+        StringBuilder sbp = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            sbp.append(allowedPassChars.charAt(rand.nextInt(allowedPassChars.length())));
+        }
+
+        String finalPassSalt = sbp.toString().trim();
+
+        passwordTextField.setText(finalPassSalt);
+
+    }
+    
+    
 }
