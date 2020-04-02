@@ -53,6 +53,8 @@ public class LoginGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         headerPanel = new javax.swing.JPanel();
+        welcomeHeaderLabelOne = new javax.swing.JLabel();
+        welcomeHeaderLabelTwo = new javax.swing.JLabel();
         formPanel = new javax.swing.JPanel();
         userNameLabel = new javax.swing.JLabel();
         userNameTextField = new javax.swing.JTextField();
@@ -63,20 +65,42 @@ public class LoginGUI extends javax.swing.JFrame {
         buttonPanel = new javax.swing.JPanel();
         loginButton = new javax.swing.JButton();
         signUpButton = new javax.swing.JButton();
-        displayButton = new javax.swing.JButton();
+        tipsForValidationPanel = new javax.swing.JPanel();
+        usernameInstructionLabel = new javax.swing.JLabel();
+        passwordInstructionLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+
+        welcomeHeaderLabelOne.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        welcomeHeaderLabelOne.setForeground(new java.awt.Color(204, 0, 204));
+        welcomeHeaderLabelOne.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        welcomeHeaderLabelOne.setText("Welcome to the TypingTutor App!!!");
+
+        welcomeHeaderLabelTwo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        welcomeHeaderLabelTwo.setForeground(new java.awt.Color(204, 0, 204));
+        welcomeHeaderLabelTwo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        welcomeHeaderLabelTwo.setText("To get started login or sign up!!!");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGap(267, 267, 267)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(welcomeHeaderLabelTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(welcomeHeaderLabelOne, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(welcomeHeaderLabelOne)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(welcomeHeaderLabelTwo)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         userNameLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -85,14 +109,14 @@ public class LoginGUI extends javax.swing.JFrame {
         passwordLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         passwordLabel.setText("Password: ");
 
-        generateButton.setText("Generate");
+        generateButton.setText("Generate Username");
         generateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generateButtonActionPerformed(evt);
             }
         });
 
-        generatePasswordButton.setText("Gen Pass");
+        generatePasswordButton.setText("Generate Password");
         generatePasswordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generatePasswordButtonActionPerformed(evt);
@@ -104,42 +128,46 @@ public class LoginGUI extends javax.swing.JFrame {
         formPanelLayout.setHorizontalGroup(
             formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formPanelLayout.createSequentialGroup()
-                .addGap(118, 118, 118)
+                .addGap(217, 217, 217)
+                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(formPanelLayout.createSequentialGroup()
-                        .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(generatePasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(formPanelLayout.createSequentialGroup()
-                        .addComponent(userNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(generateButton)))
-                .addContainerGap(162, Short.MAX_VALUE))
+                    .addComponent(generatePasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(generateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        formPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {passwordTextField, userNameTextField});
+
         formPanelLayout.setVerticalGroup(
             formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formPanelLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(userNameLabel))
-                    .addComponent(generateButton))
-                .addGap(18, 18, 18)
+                    .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(generateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(userNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passwordLabel)
-                    .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(generatePasswordButton)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addGroup(formPanelLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(generatePasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
 
-        formPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {userNameLabel, userNameTextField});
+        formPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {passwordTextField, userNameTextField});
 
+        loginButton.setBackground(new java.awt.Color(102, 255, 102));
         loginButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -148,6 +176,7 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
 
+        signUpButton.setBackground(new java.awt.Color(135, 206, 250));
         signUpButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         signUpButton.setText("Sign Up");
         signUpButton.addActionListener(new java.awt.event.ActionListener() {
@@ -156,48 +185,68 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
 
-        displayButton.setText("display");
-        displayButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                displayButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
         buttonPanel.setLayout(buttonPanelLayout);
         buttonPanelLayout.setHorizontalGroup(
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonPanelLayout.createSequentialGroup()
-                .addGap(264, 264, 264)
+                .addGap(383, 383, 383)
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(signUpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(displayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         buttonPanelLayout.setVerticalGroup(
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(displayButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(signUpButton)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        usernameInstructionLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        usernameInstructionLabel.setForeground(new java.awt.Color(255, 0, 0));
+        usernameInstructionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usernameInstructionLabel.setText("UserNames can contain only letters, numbers and must be atleast 3 characters long and less than 15 characters");
+
+        passwordInstructionLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        passwordInstructionLabel.setForeground(new java.awt.Color(0, 0, 255));
+        passwordInstructionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        passwordInstructionLabel.setText("Passwords must contain a lowercase character, an uppercase character, a number and must be 6 characters long and less than 20 characters");
+
+        javax.swing.GroupLayout tipsForValidationPanelLayout = new javax.swing.GroupLayout(tipsForValidationPanel);
+        tipsForValidationPanel.setLayout(tipsForValidationPanelLayout);
+        tipsForValidationPanelLayout.setHorizontalGroup(
+            tipsForValidationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tipsForValidationPanelLayout.createSequentialGroup()
+                .addGroup(tipsForValidationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(usernameInstructionLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passwordInstructionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        tipsForValidationPanelLayout.setVerticalGroup(
+            tipsForValidationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tipsForValidationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(usernameInstructionLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordInstructionLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(formPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tipsForValidationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(headerPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(formPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -205,11 +254,13 @@ public class LoginGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tipsForValidationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(formPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -218,13 +269,15 @@ public class LoginGUI extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         if (validateUser(userName) && validatePassword(password)) {
             JOptionPane.showMessageDialog(null, " Welcome " + userNameTextField.getText());
-            TypingTutorGUI typingTutor = new TypingTutorGUI();
-            typingTutor.setVisible(true);
+            String userdataInput = userNameTextField.getText();
+            new TypingTutorGUI(userdataInput).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, " Not a Valid username or password ");
             TypingTutorGUI typingTutor = new TypingTutorGUI();
             typingTutor.setVisible(false);
         }
+//        String userdataInput = userNameTextField.getText();
+//        new TypingTutorGUI(userdataInput).setVisible(true);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
@@ -237,19 +290,13 @@ public class LoginGUI extends javax.swing.JFrame {
             TypingTutorGUI typingTutor = new TypingTutorGUI();
             typingTutor.setVisible(false);
         }
+        //create seperate method for adding user to arraylist
+//        User user = new User(user1, ps1);
+//        myUsers.add(user);
 
-        String user1 = userNameTextField.getText();
-        String ps1 = passwordTextField.getText();
-
-        User user = new User(user1, ps1);
-        myUsers.add(user);
+        String userdataInput = userNameTextField.getText();
+        new TypingTutorGUI(userdataInput).setVisible(true);
     }//GEN-LAST:event_signUpButtonActionPerformed
-
-    private void displayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayButtonActionPerformed
-        for (User user : myUsers) {
-            System.out.println(user.getUserName());
-        }
-    }//GEN-LAST:event_displayButtonActionPerformed
 
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
         getRandomValue(3, 15);
@@ -298,17 +345,21 @@ public class LoginGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
-    private javax.swing.JButton displayButton;
     private javax.swing.JPanel formPanel;
     private javax.swing.JButton generateButton;
     private javax.swing.JButton generatePasswordButton;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JButton loginButton;
+    private javax.swing.JLabel passwordInstructionLabel;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JTextField passwordTextField;
     private javax.swing.JButton signUpButton;
+    private javax.swing.JPanel tipsForValidationPanel;
     private javax.swing.JLabel userNameLabel;
     private javax.swing.JTextField userNameTextField;
+    private javax.swing.JLabel usernameInstructionLabel;
+    private javax.swing.JLabel welcomeHeaderLabelOne;
+    private javax.swing.JLabel welcomeHeaderLabelTwo;
     // End of variables declaration//GEN-END:variables
 
     public boolean validateUser(String userName) {
