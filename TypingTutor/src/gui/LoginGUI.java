@@ -283,6 +283,10 @@ public class LoginGUI extends javax.swing.JFrame {
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
         if (validateUser(userName) && validatePassword(password)) {
             JOptionPane.showMessageDialog(null, " Welcome " + userNameTextField.getText());
+            String tempUser = userNameTextField.getText();
+            String tempPass = passwordTextField.getText();
+            User user = new User(tempUser, tempPass);
+            myUsers.add(user);
             TypingTutorGUI typingTutor = new TypingTutorGUI();
             typingTutor.setVisible(true);
         } else {

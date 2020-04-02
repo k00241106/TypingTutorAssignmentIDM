@@ -49,7 +49,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     String tipFour = "Take your time when typing to avoid mistakes. The speed will pick up as you progress";
     String tipFive = "Always scan the text a word or two in advance";
     String tipSix = "Always return to the starting position of the fingers ASDF – JKL";
-    String tipSeven = "Use the thumb of whichever hand is more convenient for you to press the Space bar";
+    String tipSeven = "Use the thumb of which ever hand is more convenient for you to press the Space bar";
     String tipEight = "Keep at least 45 - 70 cm of distance between your eyes and the screen";
     String tipNine = "Keep your elbows bent at the right angle.";
     String tipTen = "Sit straight and remember to keep your back straight";
@@ -69,7 +69,9 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         deselectButton();
         fillTips(tips);
         displayTips(tips);
-        firstResultLabel.setText(userData);
+        //firstResultLabel.setText(userData);
+        headerMessageLabel.setText("The current leader is " + userData);
+        firstPlaceNameLabel.setText(userData);
     }
 
     /**
@@ -161,18 +163,17 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         extraTipsLabel = new javax.swing.JLabel();
         tipsListLabel = new javax.swing.JLabel();
         leaderBoardPanel = new javax.swing.JPanel();
+        headerPanel = new javax.swing.JPanel();
+        headerMessageLabel = new javax.swing.JLabel();
         innerLeaderboardPanel = new javax.swing.JPanel();
         firstPlaceLabel = new javax.swing.JLabel();
-        secondResultLabel = new javax.swing.JLabel();
         secondPlaceLabel = new javax.swing.JLabel();
-        firstResultLabel = new javax.swing.JLabel();
         thirdPlaceLabel = new javax.swing.JLabel();
-        thirdResultLabel = new javax.swing.JLabel();
-        secondScoreResultabel = new javax.swing.JLabel();
-        firstScoreResultLabel1 = new javax.swing.JLabel();
-        thirdScoreResultLabel = new javax.swing.JLabel();
-        thirdScoreResultLabel1 = new javax.swing.JLabel();
-        leaderboardMessagePanel = new javax.swing.JPanel();
+        firstPlaceNameLabel = new javax.swing.JLabel();
+        firstPlaceMessageLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        leaderboardExitButton = new javax.swing.JButton();
+        resetLeaderboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Typing Application");
@@ -702,137 +703,154 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                     .addContainerGap()
                     .addComponent(mainTypingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(28, 28, 28)
-                    .addGroup(typingTutorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(extraTipsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tipsListLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(typingTutorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tipsListLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(extraTipsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(18, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("TypingTutor", typingTutorPanel);
 
-            firstPlaceLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-            firstPlaceLabel.setForeground(new java.awt.Color(255, 215, 0));
-            firstPlaceLabel.setText("1.");
+            headerMessageLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+            headerMessageLabel.setForeground(new java.awt.Color(0, 153, 51));
+            headerMessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-            secondResultLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+            javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+            headerPanel.setLayout(headerPanelLayout);
+            headerPanelLayout.setHorizontalGroup(
+                headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(headerPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(headerMessageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+            headerPanelLayout.setVerticalGroup(
+                headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(headerPanelLayout.createSequentialGroup()
+                    .addGap(27, 27, 27)
+                    .addComponent(headerMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(33, Short.MAX_VALUE))
+            );
+
+            firstPlaceLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+            firstPlaceLabel.setForeground(new java.awt.Color(212, 175, 55));
+            firstPlaceLabel.setText("1.");
 
             secondPlaceLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
             secondPlaceLabel.setForeground(new java.awt.Color(192, 192, 192));
             secondPlaceLabel.setText("2.");
 
-            firstResultLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
             thirdPlaceLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
             thirdPlaceLabel.setForeground(new java.awt.Color(205, 127, 50));
             thirdPlaceLabel.setText("3.");
 
-            thirdResultLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+            firstPlaceNameLabel.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+            firstPlaceNameLabel.setForeground(new java.awt.Color(255, 0, 255));
+            firstPlaceNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-            secondScoreResultabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-            firstScoreResultLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-            thirdScoreResultLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-            thirdScoreResultLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+            firstPlaceMessageLabel.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+            firstPlaceMessageLabel.setForeground(new java.awt.Color(255, 0, 0));
+            firstPlaceMessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
             javax.swing.GroupLayout innerLeaderboardPanelLayout = new javax.swing.GroupLayout(innerLeaderboardPanel);
             innerLeaderboardPanel.setLayout(innerLeaderboardPanelLayout);
             innerLeaderboardPanelLayout.setHorizontalGroup(
                 innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(innerLeaderboardPanelLayout.createSequentialGroup()
-                    .addGap(45, 45, 45)
+                    .addContainerGap()
                     .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(innerLeaderboardPanelLayout.createSequentialGroup()
-                            .addGap(415, 415, 415)
-                            .addComponent(firstScoreResultLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(innerLeaderboardPanelLayout.createSequentialGroup()
                             .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(thirdPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(secondPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(firstPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(secondResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(firstResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(thirdResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, Short.MAX_VALUE)
-                            .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(thirdScoreResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(secondScoreResultabel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(thirdScoreResultLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(firstPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(secondPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addComponent(firstPlaceNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(firstPlaceMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(thirdPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(240, Short.MAX_VALUE))
             );
-
-            innerLeaderboardPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {secondPlaceLabel, thirdPlaceLabel});
-
-            innerLeaderboardPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {secondResultLabel, thirdResultLabel});
-
             innerLeaderboardPanelLayout.setVerticalGroup(
                 innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(innerLeaderboardPanelLayout.createSequentialGroup()
-                    .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(innerLeaderboardPanelLayout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addComponent(firstScoreResultLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(secondScoreResultabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(innerLeaderboardPanelLayout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(firstResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(6, 6, 6)
-                    .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(secondResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(thirdScoreResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(thirdScoreResultLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(thirdResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(20, Short.MAX_VALUE))
-                .addGroup(innerLeaderboardPanelLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(firstPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(secondPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(thirdPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(30, 30, 30))
+                    .addGap(59, 59, 59)
+                    .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(firstPlaceNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(firstPlaceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                        .addComponent(firstPlaceMessageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(32, 32, 32)
+                    .addComponent(secondPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(thirdPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(63, Short.MAX_VALUE))
             );
 
-            innerLeaderboardPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {secondPlaceLabel, thirdPlaceLabel});
+            leaderboardExitButton.setBackground(new java.awt.Color(255, 102, 102));
+            leaderboardExitButton.setText("Exit");
+            leaderboardExitButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    leaderboardExitButtonActionPerformed(evt);
+                }
+            });
 
-            innerLeaderboardPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {firstResultLabel, secondResultLabel});
+            resetLeaderboardButton.setBackground(new java.awt.Color(102, 255, 102));
+            resetLeaderboardButton.setText("Reset Leaderboard");
+            resetLeaderboardButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    resetLeaderboardButtonActionPerformed(evt);
+                }
+            });
 
-            javax.swing.GroupLayout leaderboardMessagePanelLayout = new javax.swing.GroupLayout(leaderboardMessagePanel);
-            leaderboardMessagePanel.setLayout(leaderboardMessagePanelLayout);
-            leaderboardMessagePanelLayout.setHorizontalGroup(
-                leaderboardMessagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 0, Short.MAX_VALUE)
+            javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+            jPanel1.setLayout(jPanel1Layout);
+            jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(220, 220, 220)
+                    .addComponent(leaderboardExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(resetLeaderboardButton)
+                    .addGap(246, 246, 246))
             );
-            leaderboardMessagePanelLayout.setVerticalGroup(
-                leaderboardMessagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 120, Short.MAX_VALUE)
+
+            jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {leaderboardExitButton, resetLeaderboardButton});
+
+            jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(resetLeaderboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(leaderboardExitButton))
+                    .addContainerGap())
             );
+
+            jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {leaderboardExitButton, resetLeaderboardButton});
 
             javax.swing.GroupLayout leaderBoardPanelLayout = new javax.swing.GroupLayout(leaderBoardPanel);
             leaderBoardPanel.setLayout(leaderBoardPanelLayout);
             leaderBoardPanelLayout.setHorizontalGroup(
                 leaderBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(leaderBoardPanelLayout.createSequentialGroup()
-                    .addGap(129, 129, 129)
-                    .addGroup(leaderBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGap(89, 89, 89)
+                    .addGroup(leaderBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(innerLeaderboardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(leaderboardMessagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(334, Short.MAX_VALUE))
+                        .addGroup(leaderBoardPanelLayout.createSequentialGroup()
+                            .addGroup(leaderBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addContainerGap())))
             );
             leaderBoardPanelLayout.setVerticalGroup(
                 leaderBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(leaderBoardPanelLayout.createSequentialGroup()
-                    .addGap(40, 40, 40)
-                    .addComponent(leaderboardMessagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()
+                    .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(innerLeaderboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(338, Short.MAX_VALUE))
+                    .addGap(38, 38, 38)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(117, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("LeaderBoard", leaderBoardPanel);
@@ -953,13 +971,27 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                 JOptionPane.showMessageDialog(null, "Too Many charachters entered try again!!!");
             }
 
-            secondScoreResultabel.setText(roundedFinalResult + "%");
+            firstPlaceMessageLabel.setText("With a score of: " + roundedFinalResult + "%");
 
         } catch (ArithmeticException e) {
             JOptionPane.showMessageDialog(null, "Error", "No Charahcters entered", JOptionPane.ERROR_MESSAGE);
         }
         resetAfterFinish();
     }//GEN-LAST:event_finishButtonActionPerformed
+
+    private void leaderboardExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardExitButtonActionPerformed
+        int select = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+
+        if (select == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+     }//GEN-LAST:event_leaderboardExitButtonActionPerformed
+
+    private void resetLeaderboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetLeaderboardButtonActionPerformed
+        headerMessageLabel.setText("");
+        firstPlaceNameLabel.setText("");
+        firstPlaceMessageLabel.setText("");
+    }//GEN-LAST:event_resetLeaderboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1022,26 +1054,29 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton fButton;
     private javax.swing.JButton finishButton;
     private javax.swing.JLabel firstPlaceLabel;
-    private javax.swing.JLabel firstResultLabel;
-    private javax.swing.JLabel firstScoreResultLabel1;
+    private javax.swing.JLabel firstPlaceMessageLabel;
+    private javax.swing.JLabel firstPlaceNameLabel;
     private javax.swing.JButton fiveButton;
     private javax.swing.JButton fourButton;
     private javax.swing.JButton gButton;
     private javax.swing.JButton hButton;
     private javax.swing.JRadioButton hardRadioButton;
+    private javax.swing.JLabel headerMessageLabel;
+    private javax.swing.JPanel headerPanel;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton iButton;
     private javax.swing.JPanel innerLeaderboardPanel;
     private javax.swing.JLabel instructionLabel;
     private javax.swing.JPanel instructionPanel;
     private javax.swing.JButton jButton;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton kButton;
     private javax.swing.JPanel keyboardPanel;
     private javax.swing.JButton lButton;
     private javax.swing.JPanel leaderBoardPanel;
-    private javax.swing.JPanel leaderboardMessagePanel;
+    private javax.swing.JButton leaderboardExitButton;
     private javax.swing.JButton leftButton;
     private javax.swing.JButton mButton;
     private javax.swing.JPanel mainTypingPanel;
@@ -1061,11 +1096,10 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton rButton;
     private javax.swing.JPanel radioButtonPanel;
     private javax.swing.JButton resetButton;
+    private javax.swing.JButton resetLeaderboardButton;
     private javax.swing.JButton rightButton;
     private javax.swing.JButton sButton;
     private javax.swing.JLabel secondPlaceLabel;
-    private javax.swing.JLabel secondResultLabel;
-    private javax.swing.JLabel secondScoreResultabel;
     private javax.swing.JButton semicolonButton;
     private javax.swing.JButton sevenButton;
     private javax.swing.JButton shiftButton;
@@ -1075,9 +1109,6 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton tabButton;
     private javax.swing.JPanel textAreaPanel;
     private javax.swing.JLabel thirdPlaceLabel;
-    private javax.swing.JLabel thirdResultLabel;
-    private javax.swing.JLabel thirdScoreResultLabel;
-    private javax.swing.JLabel thirdScoreResultLabel1;
     private javax.swing.JButton threeButton;
     private javax.swing.JLabel tipsListLabel;
     private javax.swing.JButton twoButton;
@@ -1531,5 +1562,5 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         mediumRadioButton.setFocusPainted(false);
         hardRadioButton.setFocusPainted(false);
     }
-    //TO DO: ADD TIPS FOR EXTRA FEATURE, UPDATE GUI,
+    //TO DO: UPDATE GUI,
 }
