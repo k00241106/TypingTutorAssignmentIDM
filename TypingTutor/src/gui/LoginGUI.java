@@ -26,10 +26,10 @@ public class LoginGUI extends javax.swing.JFrame {
     private String allowedUserChars = "abcdefghijklmnopqrstuvwxyz0123456789";
     private String allowedPassChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%";
 
-    private String ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private String ALPHA = "abcdefghijklmnopqrstuvwxyz";
-    private String NUMERIC = "0123456789";
-    private String SPECIAL_CHARS = "!@#$%^&*_-/";
+    private String alphaCaps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private String alpha = "abcdefghijklmnopqrstuvwxyz";
+    private String numeric = "0123456789";
+    private String specialChars = "!@#$%^&*_-/";
 
     ArrayList<User> myUsers = new ArrayList<>();
 
@@ -59,9 +59,9 @@ public class LoginGUI extends javax.swing.JFrame {
         userNameLabel = new javax.swing.JLabel();
         userNameTextField = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
-        passwordTextField = new javax.swing.JTextField();
         generateButton = new javax.swing.JButton();
         generatePasswordButton = new javax.swing.JButton();
+        finalPasswordTextField = new javax.swing.JPasswordField();
         buttonPanel = new javax.swing.JPanel();
         loginButton = new javax.swing.JButton();
         signUpButton = new javax.swing.JButton();
@@ -135,37 +135,42 @@ public class LoginGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(finalPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(generatePasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(generateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(generatePasswordButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(generateButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
 
-        formPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {passwordTextField, userNameTextField});
+        formPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {finalPasswordTextField, userNameTextField});
+
+        formPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {generateButton, generatePasswordButton});
 
         formPanelLayout.setVerticalGroup(
             formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formPanelLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(generateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(userNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(formPanelLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(generateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
+                        .addComponent(generatePasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(formPanelLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(formPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(generatePasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(finalPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
-        formPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {passwordTextField, userNameTextField});
+        formPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {finalPasswordTextField, generateButton, generatePasswordButton, userNameTextField});
 
         loginButton.setBackground(new java.awt.Color(102, 255, 102));
         loginButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -283,23 +288,19 @@ public class LoginGUI extends javax.swing.JFrame {
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
         if (validateUser(userName) && validatePassword(password)) {
             JOptionPane.showMessageDialog(null, " Welcome " + userNameTextField.getText());
+            String userdataInput = userNameTextField.getText();
+            new TypingTutorGUI(userdataInput).setVisible(true);
+
             String tempUser = userNameTextField.getText();
-            String tempPass = passwordTextField.getText();
+            String tempPass = finalPasswordTextField.getText();
+            //String tempPass = finalPasswordTextField.getText();
             User user = new User(tempUser, tempPass);
             myUsers.add(user);
-            TypingTutorGUI typingTutor = new TypingTutorGUI();
-            typingTutor.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Not a Valid username or password");
             TypingTutorGUI typingTutor = new TypingTutorGUI();
             typingTutor.setVisible(false);
         }
-        //create seperate method for adding user to arraylist
-//        User user = new User(user1, ps1);
-//        myUsers.add(user);
-
-        String userdataInput = userNameTextField.getText();
-        new TypingTutorGUI(userdataInput).setVisible(true);
     }//GEN-LAST:event_signUpButtonActionPerformed
 
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
@@ -308,8 +309,8 @@ public class LoginGUI extends javax.swing.JFrame {
 
     private void generatePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generatePasswordButtonActionPerformed
         int len = 15;
-        String passwordGen = generatePassword(len, ALPHA_CAPS + ALPHA + SPECIAL_CHARS + NUMERIC);
-        passwordTextField.setText(passwordGen);
+        String passwordGen = generatePassword(len, alphaCaps + alpha + specialChars + numeric);
+        finalPasswordTextField.setText(passwordGen);
     }//GEN-LAST:event_generatePasswordButtonActionPerformed
 
     /**
@@ -349,6 +350,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
+    private javax.swing.JPasswordField finalPasswordTextField;
     private javax.swing.JPanel formPanel;
     private javax.swing.JButton generateButton;
     private javax.swing.JButton generatePasswordButton;
@@ -356,7 +358,6 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel passwordInstructionLabel;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JTextField passwordTextField;
     private javax.swing.JButton signUpButton;
     private javax.swing.JPanel tipsForValidationPanel;
     private javax.swing.JLabel userNameLabel;
@@ -372,7 +373,8 @@ public class LoginGUI extends javax.swing.JFrame {
     }
 
     public boolean validatePassword(String password) {
-        password = passwordTextField.getText();
+        password = finalPasswordTextField.getText();
+        //password = finalPasswordTextField.getText();
         return Pattern.matches("((?=.*[a-z])(?=.*[A-Z]).{6,20})", password);
     }
 

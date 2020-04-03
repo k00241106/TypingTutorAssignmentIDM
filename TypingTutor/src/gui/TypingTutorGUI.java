@@ -65,11 +65,8 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     public TypingTutorGUI(String userData) {
         initComponents();
         displayTextArea.addKeyListener(this);
-        disableButton();
-        deselectButton();
         fillTips(tips);
         displayTips(tips);
-        //firstResultLabel.setText(userData);
         headerMessageLabel.setText("The current leader is " + userData);
         firstPlaceNameLabel.setText(userData);
     }
@@ -171,6 +168,8 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         thirdPlaceLabel = new javax.swing.JLabel();
         firstPlaceNameLabel = new javax.swing.JLabel();
         firstPlaceMessageLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         leaderboardExitButton = new javax.swing.JButton();
         resetLeaderboardButton = new javax.swing.JButton();
@@ -746,11 +745,21 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
 
             firstPlaceNameLabel.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
             firstPlaceNameLabel.setForeground(new java.awt.Color(255, 0, 255));
-            firstPlaceNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            firstPlaceNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
             firstPlaceMessageLabel.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
             firstPlaceMessageLabel.setForeground(new java.awt.Color(255, 0, 0));
-            firstPlaceMessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            firstPlaceMessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+            jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+            jLabel1.setForeground(new java.awt.Color(0, 204, 51));
+            jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+            jLabel1.setText("Player Name");
+
+            jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+            jLabel2.setForeground(new java.awt.Color(204, 0, 204));
+            jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+            jLabel2.setText("Score");
 
             javax.swing.GroupLayout innerLeaderboardPanelLayout = new javax.swing.GroupLayout(innerLeaderboardPanel);
             innerLeaderboardPanel.setLayout(innerLeaderboardPanelLayout);
@@ -759,21 +768,29 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                 .addGroup(innerLeaderboardPanelLayout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(thirdPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(innerLeaderboardPanelLayout.createSequentialGroup()
                             .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(firstPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(secondPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(18, 18, 18)
-                            .addComponent(firstPlaceNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(firstPlaceNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(18, 18, 18)
-                            .addComponent(firstPlaceMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(thirdPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(240, Short.MAX_VALUE))
+                            .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(firstPlaceMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(185, Short.MAX_VALUE))
             );
             innerLeaderboardPanelLayout.setVerticalGroup(
                 innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(innerLeaderboardPanelLayout.createSequentialGroup()
-                    .addGap(59, 59, 59)
+                    .addGap(28, 28, 28)
+                    .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2))
+                    .addGap(18, 18, 18)
                     .addGroup(innerLeaderboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(firstPlaceNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(firstPlaceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
@@ -782,7 +799,7 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                     .addComponent(secondPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(thirdPlaceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(63, Short.MAX_VALUE))
+                    .addContainerGap(59, Short.MAX_VALUE))
             );
 
             leaderboardExitButton.setBackground(new java.awt.Color(255, 102, 102));
@@ -1069,6 +1086,8 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel instructionLabel;
     private javax.swing.JPanel instructionPanel;
     private javax.swing.JButton jButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1184,11 +1203,6 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
         tips.add(tipEight);
         tips.add(tipNine);
         tips.add(tipTen);
-    }
-
-    public void disableButton() {
-        backspaceButton.setEnabled(false);
-        backTickButton.setEnabled(false);
     }
 
     public void resetAfterFinish() {
@@ -1555,12 +1569,4 @@ public class TypingTutorGUI extends javax.swing.JFrame implements KeyListener {
                 break;
         }
     }
-
-    public void deselectButton() {
-        homeButton.setFocusable(false);
-        easyRadioButton.setFocusPainted(false);
-        mediumRadioButton.setFocusPainted(false);
-        hardRadioButton.setFocusPainted(false);
-    }
-    //TO DO: UPDATE GUI,
 }
